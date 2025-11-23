@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Carrito</title>
+<style>
+body { font-family: Arial; margin: 20px; }
+#carritoPanel { position: fixed; top: 0; right: -400px; width: 350px; height: 100%; background: white; border-left: 2px solid #ccc; padding: 20px; transition: .3s; overflow-y: auto; }
+#carritoPanel.visible { right: 0; }
+.producto { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; }
+button { padding: 8px 12px; margin-top: 10px; cursor: pointer; }
+#checkout form input, #checkout form select { width: 100%; padding: 6px; margin-bottom: 10px; }
+.metodos label { display: block; margin-bottom: 5px; }
+</style>
+</head>
+<body>
+
+<h1>Carrito de Compras</h1>
+
+<button id="btnCarrito">Ver Carrito</button>
+
+<div id="productos"></div>
+
+<div id="carritoPanel">
+<h2>Carrito</h2>
+<div id="listaCarrito"></div>
+<p>Subtotal: <span id="subtotal">0</span></p>
+<p>Impuestos (18%): <span id="impuestos">0</span></p>
+<p>Total: <span id="total">0</span></p>
+<button id="btnCheckout">Ir al Checkout</button>
+</div>
+
+<div id="checkout" style="display:none;">
+<h2>Checkout</h2>
+<form id="formCheckout">
+<input type="text" id="nombre" placeholder="Nombre completo">
+<input type="email" id="correo" placeholder="Correo">
+<input type="tel" id="telefono" placeholder="Teléfono">
+<input type="text" id="direccion" placeholder="Dirección">
+<select id="provincia">
+<option value="">Seleccione provincia</option>
+<option>Santo Domingo</option>
+<option>Santiago</option>
+<option>La Vega</option>
+<option>Puerto Plata</option>
+</select>
+
+<h3>Métodos de pago</h3>
+<div class="metodos">
+<label><input type="radio" name="pago" value="Tarjeta"> Tarjeta de crédito/débito</label>
+<label><input type="radio" name="pago" value="PayPal"> PayPal</label>
+<label><input type="radio" name="pago" value="Efectivo"> Efectivo al recibir</label>
+</div>
+
+<button type="submit">Finalizar Compra</button>
+</form>
+</div>
+
+<script>
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+function agregar(id, nombre, precio) {
+const existe = carrito.find(i => i.id === id);
+if (existe) existe.cantidad += 1;
+else carrito.push({ id, nombre, precio, cantidad: 1 });
+guardar();
+actualizar();
+}
+
+function eliminar(id) {
+carrito = carrito.filter(i => i.id !== id);
+guardar();
+actualizar();
+}
+
+function guardar() {
+localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+function actualizar() {
+const lista = document.getElementById("listaCarrito");
+lista.innerHTML = "";
+carrito.forEach(i => {
+const div = document.createElement("div");
+div.innerHTML = `
+${i.nombre} - RD$ ${i.precio} x ${i.cantidad}
+<button onclick="eliminar(${i.id})">X</button>
+`;
+lista.appendChild(div);
+});
+calcularTotales();
+}
+
+function calcularTotales() {
+let subtotal = carrito.reduce((acc, i) => acc + i.precio * i.cantidad, 0);
+let imp = subtotal * 0.18;
+let total = subtotal + imp;
+document.getElementById("subtotal").textContent = subtotal;
+document.getElementById("impuestos").textContent = imp.toFixed(2);
+document.getElementById("total").textContent = total.toFixed(2);
+}
+
+actualizar();
+
+const panel = document.getElementById("carritoPanel");
+document.getElementById("btnCarrito").addEventListener("click", () => {
+panel.classList.toggle("visible");
+});
+
+document.getElementById("btnCheckout").addEventListener("click", () => {
+document.getElementById("checkout").style.display = "block";
+panel.classList.remove("visible");
+});
+
+document.getElementById("formCheckout").addEventListener("submit", e => {
+e.preventDefault();
+const nombre = document.getElementById("nombre").value.trim();
+const correo = document.getElementById("correo").value.trim();
+const telefono = document.getElementById("telefono").value.trim();
+const direccion = document.getElementById("direccion").value.trim();
+const provincia = document.getElementById("provincia").value.trim();
+const pago = document.querySelector('input[name="pago"]:checked');
+
+if (!nombre || !correo || !telefono || !direccion || !provincia || !pago) {
+alert("Complete todos los campos antes de continuar");
+return;
+}
+
+alert("Compra realizada con éxito");
+carrito = [];
+guardar();
+actualizar();
+document.getElementById("checkout").style.display = "none";
+});
+</script>
+
+</body>
+</html>
