@@ -1,10 +1,33 @@
 import React, { useEffect, useState } from "react";
 
 const mockFAQ = [
-  // ... (Tu array mockFAQ se mantiene igual)
+  {
+    id: 1,
+    question: "¿Los pagos son reales?",
+    answer:
+      "No. Este sitio simula un flujo de compra académico. No se realiza ningún cobro real.",
+  },
+  {
+    id: 2,
+    question: "¿Cómo se seleccionan los proveedores?",
+    answer:
+      "Trabajamos con artesanos, productores locales y microempresas verificadas en República Dominicana.",
+  },
+  {
+    id: 3,
+    question: "¿Puedo rastrear mis pedidos?",
+    answer:
+      "Puedes usar la sección de Seguimiento Logístico para simular el estado de tus envíos.",
+  },
+  {
+    id: 4,
+    question: "¿Qué APIs utilizan?",
+    answer:
+      "Integramos Open-Meteo para clima, Frankfurter para tasas de cambio y APIs simuladas para autenticación y logística.",
+  },
 ];
 
-// ⬅️ ¡CORRECCIÓN FINAL! Cambiamos a función flecha para evitar el error de parseo en Actions
+// ⬅️ Declaración de componente como Función Flecha (más robusta)
 const FAQ = () => {
   const [faq, setFaq] = useState([]);
   const [openId, setOpenId] = useState(null);
@@ -43,4 +66,4 @@ const FAQ = () => {
   );
 }
 
-export default FAQ; // Exportamos el componente de la manera correcta
+export default FAQ; // Exportación final al final del archivo
