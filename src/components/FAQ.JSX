@@ -27,7 +27,6 @@ const mockFAQ = [
   },
 ];
 
-// ⬅️ ¡SOLUCIÓN FINAL! Usamos el cuerpo explícito de función para garantizar la compilación.
 const FAQ = () => {
   const [faq, setFaq] = useState([]);
   const [openId, setOpenId] = useState(null);
@@ -41,29 +40,31 @@ const FAQ = () => {
     }, 400);
   }, []);
 
-  // La sentencia 'if (loading)' es correcta y es la única que queda.
-  if (loading) return (<p>Cargando preguntas frecuentes...</p>);
-
+  // ⬅️ SOLUCIÓN DEFINITIVA: Operador Ternario. Maneja el 'loading' dentro del return principal.
   return (
-    <div className="faq-list">
-      {faq.map((item) => (
-        <div className="faq-item" key={item.id}>
-          <button
-            className="faq-question"
-            onClick={() => setOpenId(openId === item.id ? null : item.id)}
-          >
-            {item.question}
-            <span>{openId === item.id ? "−" : "+"}</span>
-          </button>
-          {openId === item.id && (
-            <div className="faq-answer">
-              <p>{item.answer}</p>
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
+    loading ? (
+      <p>Cargando preguntas frecuentes...</p>
+    ) : (
+      <div className="faq-list">
+        {faq.map((item) => (
+          <div className="faq-item" key={item.id}>
+            <button
+              className="faq-question"
+              onClick={() => setOpenId(openId === item.id ? null : item.id)}
+            >
+              {item.question}
+              <span>{openId === item.id ? "−" : "+"}</span>
+            </button>
+            {openId === item.id && (
+              <div className="faq-answer">
+                <p>{item.answer}</p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    )
   );
 }
 
-export default FAQ; // Exportación final
+export default FAQ;
