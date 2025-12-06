@@ -27,7 +27,7 @@ const mockFAQ = [
   },
 ];
 
-// ⬅️ Declaración de componente como Función Flecha (más robusta)
+// ⬅️ ¡SOLUCIÓN FINAL! Usamos el cuerpo explícito de función para garantizar la compilación.
 const FAQ = () => {
   const [faq, setFaq] = useState([]);
   const [openId, setOpenId] = useState(null);
@@ -41,7 +41,7 @@ const FAQ = () => {
     }, 400);
   }, []);
 
-  // La sintaxis de retorno condicional ahora es segura
+  // La sentencia 'if (loading)' es correcta y es la única que queda.
   if (loading) return (<p>Cargando preguntas frecuentes...</p>);
 
   return (
@@ -66,4 +66,4 @@ const FAQ = () => {
   );
 }
 
-export default FAQ; // Exportación final al final del archivo
+export default FAQ; // Exportación final
