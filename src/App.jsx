@@ -8,8 +8,8 @@ import CartSummary from "./components/CartSummary";
 import WeatherWidget from "./components/WeatherWidget";
 import ExchangeRatesWidget from "./components/ExchangeRatesWidget";
 import TrackingWidget from "./components/TrackingWidget";
-// ✅ CORRECCIÓN FINAL: Se añade la extensión explícita '.jsx' para que el compilador
-//                     de GitHub Actions (Linux) pueda encontrar el módulo 'FAQ'.
+// ✅ CORRECCIÓN FINAL: Añadimos la extensión explícita '.jsx' para evitar el error
+//                     [UNRESOLVED_IMPORT] en el servidor de Actions.
 import FAQ from "./components/FAQ.jsx"; 
 import Profile from "./components/Profile"; 
 
