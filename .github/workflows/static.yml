@@ -1,5 +1,5 @@
-# Archivo: .github/workflows/deploy.yml
-name: Deploy to GitHub Pages
+# Archivo: .github/workflows/static.yml (o el nombre que tenga el archivo de despliegue)
+name: Deploy CaribeSupply (React/Vite) to GitHub Pages
 
 on:
   push:
@@ -7,24 +7,27 @@ on:
       - main # Se ejecuta cuando haces push a la rama 'main'
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node
+      - name: Checkout Code
+        uses: actions/checkout@v4 # Obtiene el código del repositorio
+        
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Puedes cambiar a tu versión de Node
-          cache: 'npm'
+          node-version: '20' 
+          cache: 'npm' # Habilita caché para acelerar instalaciones futuras
 
       - name: Install dependencies
-        run: npm install
+        run: npm install # Instala node_modules
 
-      - name: Build project
-        run: npm run build # ¡Este paso crea la carpeta 'dist'!
+      - name: Build project (Crea la carpeta dist)
+        run: npm run build # Ejecuta el comando de compilación
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist # ¡Esto le dice que use la carpeta 'dist'!
+          publish_dir: ./dist # Directorio que se va a subir y servir (el proyecto compilado)
