@@ -40,7 +40,8 @@ export default function FAQ() {
     }, 400);
   }, []);
 
-  if (loading) return <p>Cargando preguntas frecuentes...</p>;
+  // CORRECCIÓN FINAL: Añadimos paréntesis () alrededor del JSX para resolver el PARSE_ERROR
+  if (loading) return (<p>Cargando preguntas frecuentes...</p>);
 
   return (
     <div className="faq-list">
