@@ -8,9 +8,7 @@ import CartSummary from "./components/CartSummary";
 import WeatherWidget from "./components/WeatherWidget";
 import ExchangeRatesWidget from "./components/ExchangeRatesWidget";
 import TrackingWidget from "./components/TrackingWidget";
-// ✅ CORRECCIÓN FINAL DE CASING: Cambiamos a 'Faq.jsx' para que Linux lo reconozca.
-// ¡ÚLTIMA CORRECCIÓN DE CASING! Coincide con el nombre del servidor: FAQ.JSX
-import FAQ from "./components/FAQ.JSX";
+import FAQ from "./components/FAQ.jsx"; // <-- Volvemos a .jsx (minúsculas)
 import Profile from "./components/Profile"; 
 
 import { CartProvider } from "./context/CartContext";
