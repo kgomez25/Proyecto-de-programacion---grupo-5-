@@ -7,7 +7,12 @@ const repoName = '/Proyecto-de-programacion---grupo-5-/'
 
 export default defineConfig({
   base: repoName, 
-  plugins: [react()],
+  plugins: [
+    react({
+      // ⬅️ ¡CORRECCIÓN CLAVE! Añadimos la extensión .JSX para que Vite la procese como React
+      include: '**/*.{jsx,tsx,js,ts,JSX}', 
+    }),
+  ],
   build: {
     outDir: 'dist',
     rollupOptions: {
