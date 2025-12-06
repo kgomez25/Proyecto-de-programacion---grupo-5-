@@ -8,7 +8,9 @@ import CartSummary from "./components/CartSummary";
 import WeatherWidget from "./components/WeatherWidget";
 import ExchangeRatesWidget from "./components/ExchangeRatesWidget";
 import TrackingWidget from "./components/TrackingWidget";
-import FAQ from "./components/FAQ";
+// ✅ CORRECCIÓN FINAL: Se añade la extensión explícita '.jsx' para que el compilador
+//                     de GitHub Actions (Linux) pueda encontrar el módulo 'FAQ'.
+import FAQ from "./components/FAQ.jsx"; 
 import Profile from "./components/Profile"; 
 
 import { CartProvider } from "./context/CartContext";
@@ -22,7 +24,6 @@ export default function App() {
   };
 
   return (
-
     <CartProvider>
       <div className="app-wrapper">
         <Header currentView={view} onChangeView={handleChangeView} />
