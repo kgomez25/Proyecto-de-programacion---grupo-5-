@@ -2,11 +2,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// ⬅️ ¡CORRECCIÓN CLAVE! Tienes que definir esta variable para usarla abajo.
-const repoName = '/Proyecto-de-programacion---grupo-5-/' 
-
+// ⬅️ ¡CORRECCIÓN CLAVE! Usamos la ruta directa para evitar errores de variable.
 export default defineConfig({
-  base: repoName, 
+  base: '/Proyecto-de-programacion---grupo-5-/', 
   plugins: [
     react(),
   ],
