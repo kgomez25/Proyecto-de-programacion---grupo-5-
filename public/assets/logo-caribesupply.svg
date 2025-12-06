@@ -1,0 +1,35 @@
+<svg width="260" height="70" viewBox="0 0 260 70" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo transparente -->
+  <rect width="260" height="70" fill="none"></rect>
+
+  <!-- Icono: sol + palmera + ola -->
+  <g transform="translate(20,20)">
+    <!-- Sol -->
+    <circle cx="15" cy="15" r="15" fill="#d97a3f"></circle>
+
+    <!-- Palmera -->
+    <rect x="13" y="10" width="4" height="18" rx="1.5" fill="#4b3f32"></rect>
+    <path d="M 15 10 C 6 7, 5 3, 3 1 C 8 1, 12 2, 15 5" fill="#2f8f5b"></path>
+    <path d="M 15 10 C 24 7, 25 3, 27 1 C 22 1, 18 2, 15 5" fill="#2f8f5b"></path>
+    <path d="M 15 11 C 7 11, 6 8, 4 6 C 8 6, 12 7, 15 8" fill="#3fab72"></path>
+    <path d="M 15 11 C 23 11, 24 8, 26 6 C 22 6, 18 7, 15 8" fill="#3fab72"></path>
+
+    <!-- Olas -->
+    <path d="M 0 32 Q 5 29, 10 32 T 20 32 T 30 32" fill="none" stroke="#3b6ba5" stroke-width="2"></path>
+    <path d="M 2 36 Q 7 33, 12 36 T 22 36 T 32 36" fill="none" stroke="#5a8fd0" stroke-width="2"></path>
+  </g>
+
+  <!-- Texto principal -->
+  <text x="80" y="32" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#4b3f32">
+    Caribe
+  </text>
+
+  <text x="80" y="52" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" font-weight="500" fill="#b86f3c">
+    Supply
+  </text>
+
+  <!-- Subtítulo -->
+  <text x="80" y="65" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" font-weight="400" fill="#8a7c6f" letter-spacing="1">
+    ARTESANÍA &amp; PRODUCTOS LOCALES RD
+  </text>
+</svg>
