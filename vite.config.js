@@ -2,7 +2,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// ⬅️ ¡CORRECCIÓN CLAVE! Usamos la ruta directa para evitar errores de variable.
+// ⬅️ CORRECCIÓN FINAL: Usamos la ruta absoluta del repositorio.
+// La barra inclinada final es CRÍTICA.
 export default defineConfig({
   base: '/Proyecto-de-programacion---grupo-5-/', 
   plugins: [
