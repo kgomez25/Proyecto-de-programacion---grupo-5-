@@ -9,16 +9,9 @@ export default defineConfig({
   base: repoName, 
   plugins: [
     react({
-      // ⬅️ ¡CORRECCIÓN CLAVE! Añadimos la extensión .JSX para que Vite la procese como React
+      // ⬅️ Debe incluir .JSX
       include: '**/*.{jsx,tsx,js,ts,JSX}', 
     }),
   ],
-  build: {
-    outDir: 'dist',
-    rollupOptions: {
-      input: {
-        main: 'index.html', // Punto de entrada
-      },
-    },
-  },
+  // ... resto del archivo
 })
