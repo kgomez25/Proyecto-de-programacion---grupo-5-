@@ -8,9 +8,8 @@ import CartSummary from "./components/CartSummary";
 import WeatherWidget from "./components/WeatherWidget";
 import ExchangeRatesWidget from "./components/ExchangeRatesWidget";
 import TrackingWidget from "./components/TrackingWidget";
-// ✅ CORRECCIÓN FINAL: Añadimos la extensión explícita '.jsx' para evitar el error
-//                     [UNRESOLVED_IMPORT] en el servidor de Actions.
-import FAQ from "./components/FAQ.jsx"; 
+// ✅ CORRECCIÓN FINAL DE CASING: Cambiamos a 'Faq.jsx' para que Linux lo reconozca.
+import FAQ from "./components/Faq.jsx"; 
 import Profile from "./components/Profile"; 
 
 import { CartProvider } from "./context/CartContext";
