@@ -2,17 +2,17 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// El nombre del repositorio es 'Proyecto-de-programacion---grupo-5-'
+// Nombre del repositorio para la ruta base de GitHub Pages
 const repoName = '/Proyecto-de-programacion---grupo-5-/' 
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // BASE: Corrige la ruta base para GitHub Pages
+  // **CLAVE:** Corrige la ruta base para que los assets carguen correctamente
   base: repoName, 
   
   plugins: [react()],
   
-  // BUILD: Asegura que el index.html se encuentre y se use
+  // CLAVE: Asegura que el index.html se encuentre
   build: {
     outDir: 'dist',
     rollupOptions: {
