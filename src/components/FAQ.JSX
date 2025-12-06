@@ -40,31 +40,31 @@ const FAQ = () => {
     }, 400);
   }, []);
 
-  // ⬅️ SOLUCIÓN DEFINITIVA: Operador Ternario. Maneja el 'loading' dentro del return principal.
-  return (
-    loading ? (
-      <p>Cargando preguntas frecuentes...</p>
-    ) : (
-      <div className="faq-list">
-        {faq.map((item) => (
-          <div className="faq-item" key={item.id}>
-            <button
-              className="faq-question"
-              onClick={() => setOpenId(openId === item.id ? null : item.id)}
-            >
-              {item.question}
-              <span>{openId === item.id ? "−" : "+"}</span>
-            </button>
-            {openId === item.id && (
-              <div className="faq-answer">
-                <p>{item.answer}</p>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    )
+  // ⬅️ SOLUCIÓN DEFINITIVA: Estructura del Ternario limpia y segura.
+  return loading ? (
+    // JSX si es verdadero (Loading)
+    <p>Cargando preguntas frecuentes...</p>
+  ) : (
+    // JSX si es falso (Contenido)
+    <div className="faq-list">
+      {faq.map((item) => (
+        <div className="faq-item" key={item.id}>
+          <button
+            className="faq-question"
+            onClick={() => setOpenId(openId === item.id ? null : item.id)}
+          >
+            {item.question}
+            <span>{openId === item.id ? "−" : "+"}</span>
+          </button>
+          {openId === item.id && (
+            <div className="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
   );
-}
+};
 
 export default FAQ;
